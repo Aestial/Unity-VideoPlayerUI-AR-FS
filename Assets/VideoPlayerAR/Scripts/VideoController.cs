@@ -116,21 +116,17 @@ namespace RAInfinitum.Video
         {
             if (!videoPlayer.canSetTime) return;
             if (!IsPrepared) return;
-            Stop();
             nTime = Mathf.Clamp(nTime, 0, 1);
             videoPlayer.time = nTime * Duration;
-            Play();
         }
 
         public void SeekFromCurrent(float seconds)
         {
             if (!videoPlayer.canSetTime) return;
             if (!IsPrepared) return;
-            Stop();
             double time = videoPlayer.time + (double)seconds;
             time = Mathf.Clamp((float)time, 0, (float)Duration);
             videoPlayer.time = time;
-            Play();
         }
 
         #endregion
@@ -152,6 +148,8 @@ namespace RAInfinitum.Video
             TogglePlayButton(false);
 
             StartCoroutine(DownloadCoroutine(url));
+            //videoPlayer.Prepare();
+
         }
 
         void OnEnable()
