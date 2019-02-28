@@ -7,7 +7,7 @@ namespace RA.Video
     /// <summary>
     ///  VideoImageBehaviour: Set aspect ratio for video image and shows/hiddes it.
     /// </summary> 
-    public class VideoImageBehaviour : MonoBehaviour
+    public class VideoImageResize : MonoBehaviour
     {
         public UniversalMediaPlayer ump;
 

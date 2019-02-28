@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace RA.Video
 {
@@ -9,6 +10,8 @@ namespace RA.Video
     /// </summary> 
     public class HUDAppearBehaviour : MonoBehaviour
     {
+        public UniversalMediaPlayer ump;
+
         [SerializeField] CanvasGroup canvasGroup;
 
         [SerializeField] float waitTime = 3.0f;
@@ -17,14 +20,35 @@ namespace RA.Video
 
         bool isShown;
         bool hasTriggered;
-
+        bool canTrigger;
         float startTime;
+
+        UnityAction m_OnPlayingAction;
+        UnityAction m_OnEndReachedAction;
+
+        void Awake()
+        {
+            m_OnPlayingAction += OnPlaying;
+            m_OnEndReachedAction += OnEndReached;
+        }
 
         void Start()
         {
             isShown = true;
             hasTriggered = false;
             startTime = Time.time;
+        }
+
+        void OnEnable()
+        {
+            ump.AddPlayingEvent(m_OnPlayingAction);
+            ump.AddEndReachedEvent(m_OnEndReachedAction);
+        }
+
+        void OnDisable()
+        {
+            ump.RemovePlayingEvent(m_OnPlayingAction);
+            ump.RemoveEndReachedEvent(m_OnEndReachedAction);
         }
 
         void Update()
@@ -46,12 +70,22 @@ namespace RA.Video
                 Start();
                 StartCoroutine(AppearCoroutine(true));
             }
-            if (Time.time - startTime > waitTime && !hasTriggered && isShown)
+            if ((Time.time - startTime > waitTime) && canTrigger && !hasTriggered && isShown)
             {
                 hasTriggered = true;
                 StartCoroutine(AppearCoroutine(false));
             }
     	}
+
+        private void OnPlaying()
+        {
+            canTrigger = true;
+        }
+
+        private void OnEndReached()
+        {
+            canTrigger = false;
+        }
 
         IEnumerator AppearCoroutine(bool isAppearing)
         {
