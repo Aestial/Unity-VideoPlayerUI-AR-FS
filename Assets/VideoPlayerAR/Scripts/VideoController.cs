@@ -4,14 +4,22 @@ using UnityEngine;
 
 namespace RA.Video 
 {
+    public enum VideoPlayerMode
+    {
+        OnTarget,
+        Fullscreen
+    };
+
     /// <summary>
-    ///  VideoController: Singleton Controller for static access
+    ///  VideoController: Singleton Controller for 'global' access
     /// </summary> 
     public class VideoController : Singleton<VideoController>
     {
         public UniversalMediaPlayer ump;
 
         [SerializeField] string url;
+        [SerializeField] GameObject onTargetGO;
+        [SerializeField] GameObject fullscreenGO;
 
         bool isDone;
 
@@ -53,11 +61,40 @@ namespace RA.Video
         #endregion
 
         #region PublicMethods
-        public void PlayFullscreen(string url)
+        public void Load(string url)
         {
             ump.Path = url;
-            ump.Prepare();
+            ump.Prepare();     
         }
+
+        public void Play()
+        {
+            if (!IsPrepared) return;
+            ump.Play();
+        }
+
+        public void PlayFullscreen(string url)
+        {
+            Load(url);
+        }
+
+        public void SwitchToMode(VideoPlayerMode mode)
+        {
+            switch(mode)
+            {
+                case VideoPlayerMode.OnTarget:
+                    onTargetGO.SetActive(true);
+                    onTargetGO.SetActive(false);
+                    break;
+                case VideoPlayerMode.Fullscreen:
+                    onTargetGO.SetActive(false);
+                    onTargetGO.SetActive(true);
+                    break;
+                default:
+                    break;
+            }
+        }
+
         #endregion
 
         #region MonoBehaviourMethods
@@ -68,7 +105,7 @@ namespace RA.Video
 
         void Update()
         {
-
+            
         }
         #endregion
     }
