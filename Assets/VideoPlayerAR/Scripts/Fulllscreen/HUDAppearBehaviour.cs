@@ -68,14 +68,19 @@ namespace RA.Video
     #endif
             {
                 Start();
-                StartCoroutine(AppearCoroutine(true));
+                Appear(true);
             }
             if ((Time.time - startTime > waitTime) && canTrigger && !hasTriggered && isShown)
             {
                 hasTriggered = true;
-                StartCoroutine(AppearCoroutine(false));
+                Appear(false);
             }
     	}
+
+        public void Appear(bool appear)
+        {
+            StartCoroutine(AppearCoroutine(appear));
+        }
 
         private void OnPlaying()
         {

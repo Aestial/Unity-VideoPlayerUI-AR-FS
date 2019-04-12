@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace RA.Video 
@@ -17,8 +18,9 @@ namespace RA.Video
         [SerializeField] string url;
         [SerializeField] FullscreenHUDController fullscreenHUD;
         public UniversalMediaPlayer ump;
-
+        public bool isActive;
         bool isDone;
+
         UnityAction<int, int> m_OnPreparedAction;
         UnityAction m_OnEndReachedAction;
 
@@ -31,7 +33,16 @@ namespace RA.Video
 
         void Start()
         {
-            PlayOnTarget(url);
+            //VideoDownload.Instance.DownloadCoroutine
+            //PlayOnTarget(url);
+            //SwitchToMode(VideoPlayerMode.OnTarget);
+            StartCoroutine(Download(url));
+        }
+
+        IEnumerator Download(string url)
+        {
+            yield return VideoDownload.Instance.DownloadCoroutine(url);
+            PlayOnTarget(VideoDownload.Instance.filePath);
         }
 
         void OnEnable()
@@ -112,8 +123,11 @@ namespace RA.Video
 
         public void SwitchToFullscreen(bool isFullscreen)
         {
-            VideoPlayerMode mode = isFullscreen ? VideoPlayerMode.Fullscreen : VideoPlayerMode.OnTarget;
-            SwitchToMode(mode);
+            if (isActive)
+            {
+                VideoPlayerMode mode = isFullscreen ? VideoPlayerMode.Fullscreen : VideoPlayerMode.OnTarget;
+                SwitchToMode(mode);    
+            }
         }
 
         public void SwitchToMode(VideoPlayerMode mode)
@@ -142,6 +156,7 @@ namespace RA.Video
         private void OnPrepared(int width, int height)
         {
             isDone = false;
+            isActive = true;
             Play();
         }
 

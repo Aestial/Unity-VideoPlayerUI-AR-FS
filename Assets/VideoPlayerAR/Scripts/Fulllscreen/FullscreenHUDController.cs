@@ -8,16 +8,13 @@ namespace RA.Video
     {
         [SerializeField] Canvas videoCanvas;
         [SerializeField] Canvas controlCanvas;
-
-        void Start()
-        {
-
-        }
+        [SerializeField] HUDAppearBehaviour m_HUDAppear;
 
         public void Show(bool enabled)
         {
             videoCanvas.enabled = enabled;
             controlCanvas.enabled = enabled;
+            //m_HUDAppear.Appear(enabled);
         }
     }
 }
