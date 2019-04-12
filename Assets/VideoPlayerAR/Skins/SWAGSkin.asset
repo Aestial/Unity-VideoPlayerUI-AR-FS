@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bd6411ea7615047fc8fc0c9941da8b0c, type: 3}
-  m_Name: Default Fullscreen HUD Skin
+  m_Name: SWAGSkin
   m_EditorClassIdentifier: 
-  name: Default
-  description: RA Infinitum default Video Player skin
+  name: SWAG
+  description: Nice swaggy colors
   backgroundColor: {r: 0.1971787, g: 0.1979457, b: 0.1981132, a: 1}
   buttonsColor: {r: 0.8301887, g: 0.81433934, b: 0.21537916, a: 1}
   panelsColor: {r: 0.26699895, g: 0.6508243, b: 0.754717, a: 0.69803923}

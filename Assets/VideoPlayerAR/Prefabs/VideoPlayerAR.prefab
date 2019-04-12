@@ -517,7 +517,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   videoCanvas: {fileID: 223266171975103480}
   controlCanvas: {fileID: 223480462074419094}
-  skin: {fileID: 11400000, guid: 15e008a3d1efc4ecaa38aeb3ce751b6c, type: 2}
+  skin: {fileID: 11400000, guid: 64464260b97334c8a9a5bf8f3b8170ce, type: 2}
   backgroundImage: {fileID: 114389143030820732}
   scrubBallImage: {fileID: 114436030777187768}
   panelsImages:

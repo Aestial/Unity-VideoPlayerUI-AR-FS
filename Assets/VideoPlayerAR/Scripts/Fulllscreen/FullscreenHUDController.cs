@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 namespace RA.Video
@@ -21,15 +19,16 @@ namespace RA.Video
 
         void Start()
         {
-            Debug.Log("SKIN Configuration");
-            Debug.Log("Skin name: " + skin.name);
-            Debug.Log("Skin description: " + skin.description);
+            skin.Print();
+            SetColors();
+        }
 
+        private void SetColors()
+        {
             backgroundImage.color = skin.backgroundColor;
             scrubBallImage.color = skin.scrubBallColor;
             SetImageArrayColors(panelsImages, skin.panelsColor);
             SetImageArrayColors(buttonsImages, skin.buttonsColor);
-
         }
 
         private void SetImageArrayColors(Image[] images, Color color)
