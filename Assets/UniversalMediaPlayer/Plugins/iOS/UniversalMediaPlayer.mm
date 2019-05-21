@@ -210,7 +210,13 @@ intptr_t CMVideoSampling_SampleBuffer(CMVideoSampling* sampling, CVImageBufferRe
         CFRelease(sampling->cvTextureCacheTexture);
         FlushCVTextureCache(sampling->cvTextureCache);
     }
+    
+#if BGRA32
+    sampling->cvTextureCacheTexture = CreateBGRA32TextureFromCVTextureCache(sampling->cvTextureCache, sampling->cvImageBuffer, w, h);
+#else
     sampling->cvTextureCacheTexture = CreateTextureFromCVTextureCache(sampling->cvTextureCache, sampling->cvImageBuffer, w, h);
+#endif
+    
     if (sampling->cvTextureCacheTexture)
         retTex = GetTextureFromCVTextureCache(sampling->cvTextureCacheTexture);
     
@@ -262,7 +268,6 @@ extern "C"
             CVPixelBufferRef pixelBuffer = [player getPixelBuffer];
             if (pixelBuffer != nil)
                 texture = CMVideoSampling_SampleBuffer(sampling, pixelBuffer);
-                        NSLog(@"YOYO - texture %ld", texture);
         }
 
         return texture;

@@ -12,7 +12,7 @@ public class UMPPostBuilds : MonoBehaviour
     [PostProcessBuild]
     public static void OnPostprocessBuild(BuildTarget buildTarget, string path)
     {
-        var settings = UMPSettings.GetSettings();
+        var settings = UMPSettings.Instance;
 
         switch (buildTarget)
         {
@@ -90,7 +90,7 @@ public class UMPPostBuilds : MonoBehaviour
 
         if (!string.IsNullOrEmpty(buildPath))
         {
-            if (!settings.UseExternalLibs)
+            if (!settings.UseExternalLibraries)
             {
                 CopyPlugins(settings.AssetPath + "/Plugins/Win/x86/plugins/", dataPath + "/Plugins/plugins/");
             }
@@ -113,7 +113,7 @@ public class UMPPostBuilds : MonoBehaviour
 
         if (!string.IsNullOrEmpty(buildPath))
         {
-            if (!settings.UseExternalLibs)
+            if (!settings.UseExternalLibraries)
             {
                 CopyPlugins(settings.AssetPath + "/Plugins/Win/x86_64/plugins/", dataPath + "/Plugins/plugins/");
             }
@@ -143,7 +143,7 @@ public class UMPPostBuilds : MonoBehaviour
                 Directory.Move(dataPath + "/Plugins/x86_64/" + UMPSettings.ASSET_NAME + ".bundle", dataPath + "/Plugins/" + UMPSettings.ASSET_NAME + ".bundle");
         }
 
-        if (!string.IsNullOrEmpty(buildPath) && settings.UseExternalLibs)
+        if (!string.IsNullOrEmpty(buildPath) && settings.UseExternalLibraries)
         {
             if (Directory.Exists(dataPath + "/Plugins/" + UMPSettings.LIB_VLC_NAME + ".bundle"))
                 Directory.Delete(dataPath + "/Plugins/" + UMPSettings.LIB_VLC_NAME + ".bundle", true);
@@ -161,7 +161,7 @@ public class UMPPostBuilds : MonoBehaviour
 
         if (!string.IsNullOrEmpty(buildPath))
         {
-            if (!settings.UseExternalLibs)
+            if (!settings.UseExternalLibraries)
             {
                 string vlcFolderPath32 = dataPath + "/Plugins/x86/vlc";
                 if (!Directory.Exists(vlcFolderPath32))
@@ -193,7 +193,7 @@ public class UMPPostBuilds : MonoBehaviour
 
         if (!string.IsNullOrEmpty(buildPath))
         {
-            if (!settings.UseExternalLibs)
+            if (!settings.UseExternalLibraries)
             {
                 string vlcFolderPath64 = dataPath + "/Plugins/x86_64/vlc";
                 if (!Directory.Exists(vlcFolderPath64))
@@ -225,7 +225,7 @@ public class UMPPostBuilds : MonoBehaviour
 
         if (!string.IsNullOrEmpty(buildPath))
         {
-            if (!settings.UseExternalLibs)
+            if (!settings.UseExternalLibraries)
             {
                 string vlcFolderPath32 = dataPath + "/Plugins/x86/vlc";
                 if (!Directory.Exists(vlcFolderPath32))

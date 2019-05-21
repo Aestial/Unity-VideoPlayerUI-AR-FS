@@ -1,71 +1,74 @@
 ﻿using UnityEngine;
 
-public class EventsHandlerExample : MonoBehaviour
+namespace UMP
 {
-    public UniversalMediaPlayer _mediaPlayer;
-
-    void Start()
+    public class EventsHandlerExample : MonoBehaviour
     {
-        if (_mediaPlayer != null)
+        public UniversalMediaPlayer _mediaPlayer;
+
+        void Start()
         {
-            _mediaPlayer.AddPlayingEvent(OnPlayerPlaying);
-            _mediaPlayer.AddTimeChangedEvent(OnPlayerTimeChanged);
-            _mediaPlayer.AddPositionChangedEvent(OnPlayerPositionChanged);
-            _mediaPlayer.AddSnapshotTakenEvent(OnPlayerSnapshotTaken);
+            if (_mediaPlayer != null)
+            {
+                _mediaPlayer.AddPlayingEvent(OnPlayerPlaying);
+                _mediaPlayer.AddTimeChangedEvent(OnPlayerTimeChanged);
+                _mediaPlayer.AddPositionChangedEvent(OnPlayerPositionChanged);
+                _mediaPlayer.AddSnapshotTakenEvent(OnPlayerSnapshotTaken);
+            }
         }
-    }
-    public void Play()
-    {
-        _mediaPlayer.Play();
-    }
+        public void Play()
+        {
+            _mediaPlayer.Play();
+        }
 
-    public void OnPlayerOpening()
-    {
-        Debug.Log("OnPlayerOpening");
-    }
+        public void OnPlayerOpening()
+        {
+            Debug.Log("OnPlayerOpening");
+        }
 
-    public void OnPlayerBuffering()
-    {
-        Debug.Log("OnPlayerBuffering");
-    }
+        public void OnPlayerBuffering()
+        {
+            Debug.Log("OnPlayerBuffering");
+        }
 
-    public void OnPlayerPlaying()
-    {
-        Debug.Log("OnPlayerPlaying");
-    }
+        public void OnPlayerPlaying()
+        {
+            Debug.Log("OnPlayerPlaying");
+        }
 
-    public void OnPlayerPaused()
-    {
-        Debug.Log("OnPlayerPaused");
-    }
+        public void OnPlayerPaused()
+        {
+            Debug.Log("OnPlayerPaused");
+        }
 
-    public void OnPlayerStopped()
-    {
-        Debug.Log("OnPlayerStopped");
-    }
+        public void OnPlayerStopped()
+        {
+            Debug.Log("OnPlayerStopped");
+        }
 
-    public void OnPlayerEndReached()
-    {
-        Debug.Log("OnPlayerEndReached");
-    }
+        public void OnPlayerEndReached()
+        {
+            Debug.Log("OnPlayerEndReached");
+        }
 
-    public void OnPlayerEncounteredError()
-    {
-        Debug.Log("OnPlayerEncounteredError");
-    }
+        public void OnPlayerEncounteredError()
+        {
+            Debug.Log("OnPlayerEncounteredError");
+        }
 
-    public void OnPlayerTimeChanged(long time)
-    {
-        Debug.Log("OnPlayerTimeChanged: " + time);
-    }
+        public void OnPlayerTimeChanged(long time)
+        {
+            Debug.Log("OnPlayerTimeChanged: " + time);
+        }
 
-    public void OnPlayerPositionChanged(float position)
-    {
-        Debug.Log("OnPlayerPositionChanged: " + position);
-    }
+        public void OnPlayerPositionChanged(float position)
+        {
+            Debug.Log("OnPlayerPositionChanged: " + position);
+        }
 
-    public void OnPlayerSnapshotTaken(string path)
-    {
-        Debug.Log("OnPlayerSnapshotTaken: " + path);
+        public void OnPlayerSnapshotTaken(string path)
+        {
+            Debug.Log("OnPlayerSnapshotTaken: " + path);
+        }
     }
 }

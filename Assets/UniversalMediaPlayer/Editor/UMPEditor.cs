@@ -176,7 +176,7 @@ public class UMPEditor : Editor
         serializedObject.Update();
 
         var umpEditor = (UniversalMediaPlayer)target;
-        var umpSettings = UMPSettings.GetSettings();
+        var settings = UMPSettings.Instance;
 
         EditorGUI.BeginChangeCheck();
 
@@ -234,7 +234,7 @@ public class UMPEditor : Editor
         if (GUILayout.Button("Advanced options", _useAdvancedProp.boolValue ? _toggleButton : EditorStyles.miniButtonMid))
         {
             _useAdvancedProp.boolValue = !_useAdvancedProp.boolValue;
-            _availablePlatforms = UMPSettings.InstalledPlayerPlatforms(UMPSettings.Desktop | UMPSettings.Mobile);
+            _availablePlatforms = settings.GetInstalledPlatforms(UMPSettings.Desktop | UMPSettings.Mobile);
         }
 
         if (_useAdvancedProp.boolValue)
@@ -264,7 +264,7 @@ public class UMPEditor : Editor
             EditorGUILayout.Space();
 
             if (_availablePlatforms == null || _availablePlatforms.Length <= 0)
-                _availablePlatforms = UMPSettings.InstalledPlayerPlatforms(UMPSettings.Desktop | UMPSettings.Mobile);
+                _availablePlatforms = settings.GetInstalledPlatforms(UMPSettings.Desktop | UMPSettings.Mobile);
 
             if (_availablePlatforms.Length <= 0)
             {
@@ -302,9 +302,9 @@ public class UMPEditor : Editor
                 if (_desktopHardwareDecodingProp.intValue == (int)PlayerOptions.States.Default)
                 {
                     var hardwareDecodingName = "DirectX Video Acceleration (DXVA) 2.0";
-                    if (UMPSettings.SupportedPlatform == UMPSettings.Platforms.Mac)
+                    if (UMPSettings.RuntimePlatform == UMPSettings.Platforms.Mac)
                         hardwareDecodingName = "Video Decode Acceleration Framework (VDA)";
-                    if (UMPSettings.SupportedPlatform == UMPSettings.Platforms.Linux)
+                    if (UMPSettings.RuntimePlatform == UMPSettings.Platforms.Linux)
                         hardwareDecodingName = "VA-API video decoder via DRM";
 
                     GUI.Label(GUILayoutUtility.GetLastRect(), new GUIContent("", hardwareDecodingName));
@@ -392,7 +392,7 @@ public class UMPEditor : Editor
                 for (int i = 0; i < playerValues.Length; i++)
                 {
                     var playerType = (PlayerOptionsAndroid.PlayerTypes)playerValues[i];
-                    if ((umpSettings.PlayersAndroid & playerType) == playerType)
+                    if ((settings.PlayersAndroid & playerType) == playerType)
                     {
                         playersNames.Add(playerType.ToString());
 
@@ -497,7 +497,7 @@ public class UMPEditor : Editor
                 for (int i = 0; i < playerValues.Length; i++)
                 {
                     var playerType = (PlayerOptionsIPhone.PlayerTypes)playerValues[i];
-                    if ((umpSettings.PlayersIPhone & playerType) == playerType)
+                    if ((settings.PlayersIPhone & playerType) == playerType)
                     {
                         playersNames.Add(playerType.ToString());
 
@@ -611,10 +611,10 @@ public class UMPEditor : Editor
             _fixedVideoHeightProp.intValue = -1;
         }
 
-        if (UMPSettings.GetSettings().UseExternalLibs)
+        if (settings.UseExternalLibraries)
         {
             if (_externalPath.Equals(string.Empty))
-                _externalPath = UMPSettings.RuntimePlatformLibraryPath(true);
+                _externalPath = settings.GetLibrariesPath(UMPSettings.RuntimePlatform, true);
 
             if (_externalPath != string.Empty)
             {

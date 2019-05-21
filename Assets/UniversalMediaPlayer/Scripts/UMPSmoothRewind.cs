@@ -1,34 +1,36 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using UMP;
 
-public class UMPSmoothRewind : MonoBehaviour
+namespace UMP
 {
-    [SerializeField]
-    private UniversalMediaPlayer _mediaPlayer;
-
-    [SerializeField]
-    private Slider _rewindSlider;
-
-    private long _framesConterCahce;
-
-    private void Update()
+    public class UMPSmoothRewind : MonoBehaviour
     {
-        if (_mediaPlayer.PlatformPlayer is MediaPlayerStandalone)
-        {
-            if (_mediaPlayer.IsPlaying && _framesConterCahce != _mediaPlayer.FramesCounter)
-            {
-                _framesConterCahce = _mediaPlayer.FramesCounter;
-                var frameAmount = (_mediaPlayer.PlatformPlayer as MediaPlayerStandalone).FramesAmount;
+        [SerializeField]
+        private UniversalMediaPlayer _mediaPlayer = null;
 
-                if (frameAmount > 0)
-                    _rewindSlider.value = (float)_framesConterCahce / frameAmount;
+        [SerializeField]
+        private Slider _rewindSlider = null;
+
+        private long _framesCounterCahce;
+
+        private void Update()
+        {
+            if (_mediaPlayer.PlatformPlayer is MediaPlayerStandalone)
+            {
+                if (_mediaPlayer.IsPlaying && _framesCounterCahce != _mediaPlayer.FramesCounter)
+                {
+                    _framesCounterCahce = _mediaPlayer.FramesCounter;
+                    var frameAmount = (_mediaPlayer.PlatformPlayer as MediaPlayerStandalone).FramesAmount;
+
+                    if (frameAmount > 0)
+                        _rewindSlider.value = (float)_framesCounterCahce / frameAmount;
+                }
             }
         }
-    }
 
-    public void OnPositionChanged()
-    {
-        _mediaPlayer.Position = _rewindSlider.value;
+        public void OnPositionChanged()
+        {
+            _mediaPlayer.Position = _rewindSlider.value;
+        }
     }
 }

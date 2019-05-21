@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 6df52389a806d1b408a1db65f397d94a
-timeCreated: 1532624939
+timeCreated: 1556213942
 licenseType: Store
 PluginImporter:
   serializedVersion: 1
@@ -11,14 +11,13 @@ PluginImporter:
     Android:
       enabled: 1
       settings: {}
-    Any:
-      enabled: 0
-      settings: {}
     Editor:
       enabled: 0
       settings:
         DefaultValueInitialized: true
+    data:
+      enabled: 0
+      settings: {}
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-          

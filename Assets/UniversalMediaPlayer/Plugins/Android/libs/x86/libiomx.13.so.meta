@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 582f8467794394544ac995f13be2149e
-timeCreated: 1532359742
+timeCreated: 1556212742
 licenseType: Store
 PluginImporter:
   serializedVersion: 1
@@ -12,14 +12,13 @@ PluginImporter:
       enabled: 1
       settings:
         CPU: x86
-    Any:
-      enabled: 0
-      settings: {}
     Editor:
       enabled: 0
       settings:
         DefaultValueInitialized: true
+    data:
+      enabled: 0
+      settings: {}
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-            

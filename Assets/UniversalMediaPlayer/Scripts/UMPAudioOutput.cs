@@ -1,25 +1,27 @@
-﻿using UMP;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class UMPAudioOutput : AudioOutput
+namespace UMP
 {
-    /* 
-     * Example how to get audio output data on desktop platforms (Win, Mac, Linux),
-     * to use it uncomment code below
-     */
-
-    private void Awake()
+    public class UMPAudioOutput : AudioOutput
     {
-        //OutputDataListener += OnOutputData;
-    }
+        /* 
+         * Example how to get audio output data on desktop platforms (Win, Mac, Linux),
+         * to use it uncomment code below
+         */
 
-    private void OnDestroy()
-    {
-        //OutputDataListener -= OnOutputData;
-    }
+        private void Awake()
+        {
+            //OutputDataListener += OnOutputData;
+        }
 
-    private void OnOutputData(float[] data, AudioChannels channels)
-    {
-        Debug.Log("Handle audio output data");
+        private void OnDestroy()
+        {
+            //OutputDataListener -= OnOutputData;
+        }
+
+        private void OnOutputData(float[] data, AudioChannels channels)
+        {
+            Debug.Log("Handle audio output data");
+        }
     }
 }
