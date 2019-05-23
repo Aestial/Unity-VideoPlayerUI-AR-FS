@@ -25,6 +25,8 @@ namespace RA.Video
         UnityAction m_OnEndReachAction;
         UnityAction<float> m_OnPositionChangedAction;
 
+        bool isDragging;
+
         public long Time
         {
             get { return ump.Time; }
@@ -33,6 +35,16 @@ namespace RA.Video
         public long Length
         {
             get { return ump.Length; }
+        }
+
+        public void SetDragging(bool value)
+        {
+            isDragging = value;
+        }
+
+        public void SetPosition()
+        {
+            ump.Position = slider.value;
         }
 
         void Awake()
@@ -88,8 +100,8 @@ namespace RA.Video
 
         private void OnPositionChanged(float position)
         {
-            slider.value = position;
-        
+            if (!isDragging)
+                slider.value = position;
         }
         #endregion
 
