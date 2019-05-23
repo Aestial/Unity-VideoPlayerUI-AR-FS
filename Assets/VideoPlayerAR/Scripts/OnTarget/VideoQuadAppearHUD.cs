@@ -64,7 +64,7 @@ namespace RA.Video
             StartCoroutine(AppearCoroutine(true));
         }
 
-        void OnMouseOver()
+        void OnMouseDown()
         {
             startTime = Time.time;
         }
