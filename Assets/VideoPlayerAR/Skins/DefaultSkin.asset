@@ -16,5 +16,5 @@ MonoBehaviour:
   description: Beautiful default skin for the Video Player
   backgroundColor: {r: 0, g: 0, b: 0, a: 1}
   buttonsColor: {r: 0.9245283, g: 0.9027234, b: 0.9027234, a: 1}
-  panelsColor: {r: 0.3301887, g: 0.3301887, b: 0.3301887, a: 0.92156863}
-  scrubBallColor: {r: 0.7169812, g: 0.09807763, b: 0.09807763, a: 0.95686275}
+  panelsColor: {r: 0.33962262, g: 0.33962262, b: 0.33962262, a: 0.3647059}
+  scrubBallColor: {r: 0.9245283, g: 0.9027234, b: 0.9027234, a: 1}

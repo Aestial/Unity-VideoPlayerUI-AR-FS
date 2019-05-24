@@ -442,7 +442,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   videoCanvas: {fileID: 223266171975103480}
   controlCanvas: {fileID: 223480462074419094}
-  skin: {fileID: 11400000, guid: 64464260b97334c8a9a5bf8f3b8170ce, type: 2}
+  skin: {fileID: 11400000, guid: 15e008a3d1efc4ecaa38aeb3ce751b6c, type: 2}
   backgroundImage: {fileID: 114389143030820732}
   scrubBallImage: {fileID: 114436030777187768}
   panelsImages:
@@ -1567,7 +1567,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ump: {fileID: 114141526541887262}
-  globalScale: 0.705
+  globalScale: 0.85
 --- !u!114 &114062028236838684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1748,7 +1748,7 @@ GameObject:
   - component: {fileID: 222359121311019050}
   - component: {fileID: 114298082937129006}
   m_Layer: 5
-  m_Name: SlidersPanel
+  m_Name: TimePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1924,7 +1924,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -20}
-  m_SizeDelta: {x: -200, y: 15}
+  m_SizeDelta: {x: -200, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &114438656076905892
 MonoBehaviour:
@@ -2334,7 +2334,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: -1}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1024, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &223098336656203928
@@ -2647,7 +2647,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 15, y: 0}
+  m_SizeDelta: {x: 60, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &222123535107107102
 CanvasRenderer:
@@ -2866,7 +2866,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 114839978530755928}
   m_FillRect: {fileID: 224355554690676120}
   m_HandleRect: {fileID: 224747706675547974}
